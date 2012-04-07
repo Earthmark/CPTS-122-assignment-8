@@ -1,20 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <ProjectGuid>{818CBEA8-8098-46E2-9117-9BA62C228930}</ProjectGuid>
+    <ProjectGuid>{043FEC42-1C49-4E48-ABF4-987044196952}</ProjectGuid>
     <ProjectTypeGuids>{6D335F3A-9D43-41b4-9D22-F6F17C4BE596};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Project_8</RootNamespace>
-    <AssemblyName>Project 8</AssemblyName>
+    <RootNamespace>Assignment_8</RootNamespace>
+    <AssemblyName>Assignment 8</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <XnaFrameworkVersion>v4.0</XnaFrameworkVersion>
     <XnaPlatform>Windows</XnaPlatform>
     <XnaProfile>HiDef</XnaProfile>
-    <XnaCrossPlatformGroupID>657a98ec-978e-484f-84e5-a89c1c4fb64f</XnaCrossPlatformGroupID>
+    <XnaCrossPlatformGroupID>99e6d61d-cb29-4797-8990-c9d2db09d4fa</XnaCrossPlatformGroupID>
     <XnaOutputType>Game</XnaOutputType>
     <ApplicationIcon>Game.ico</ApplicationIcon>
     <Thumbnail>GameThumbnail.png</Thumbnail>
@@ -116,8 +116,8 @@
     <Content Include="GameThumbnail.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Project 8Content\Project 8Content.contentproj">
-      <Name>Project_8Content</Name>
+    <ProjectReference Include="..\Assignment 8Content\Assignment 8Content.contentproj">
+      <Name>Assignment_8Content</Name>
       <XnaReferenceType>Content</XnaReferenceType>
     </ProjectReference>
   </ItemGroup>
