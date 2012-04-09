@@ -37,6 +37,7 @@ namespace Assignment_8
         private float topSpeed { get; set; }
         private float turningSpeed { get; set; }
         private float accel { get; set; }
+        //master setter for above values
         private CarType carType
         {
             get
@@ -47,7 +48,7 @@ namespace Assignment_8
             {
                 carType = value;
 
-                switch (value)
+                switch(value)
                 {//TODO: make these actual values
                     case CarType.Semi:
                         topSpeed = 0.0f;
@@ -79,8 +80,7 @@ namespace Assignment_8
         //used to set car origin position, helpful so rotation works correctly
         public Vector2 getCarOrigin()
         {
-            return new Vector2 ( carSkin.Width / 2, carSkin.Height / 2 );
+            return new Vector2(carSkin.Width / 2, carSkin.Height / 2);
         }
-
     }
 }
