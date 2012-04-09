@@ -1,0 +1,23 @@
+demo in the background
+
+-Instructions
+-Start Race
+-Top 10
+-Exit
+
+cars have different attributes
+-sprite image
+-position (vector2)
+-angle (angle thingy)
+-Accell (float)
+-topSpeed (float)
+-Turning (float)
+
+use bounds,
+have halfway gate
+
+pathfinding AI
+
+4 cars on track
+
+random pathfinding
