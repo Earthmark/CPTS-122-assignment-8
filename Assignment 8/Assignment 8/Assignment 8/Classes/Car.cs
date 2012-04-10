@@ -31,14 +31,15 @@ namespace Assignment_8
         //true if player controled, false if NPC
         public bool isHuman { get; set; }
         //current car speed
-        private float curSpeed { get; set; }
+        public float curSpeed { get; set; }
 
         /*Stats, changed by changing the type*/
-        private float topSpeed { get; set; }
-        private float turningSpeed { get; set; }
-        private float accel { get; set; }
+        public float topSpeed { get; private set; }
+        public float turningSpeed { get; private set; }
+        public float accel { get; private set; }
+        public float mass { get; private set; }
         //master setter for above values
-        private CarType carType
+        public CarType carType
         {
             get
             {
@@ -47,25 +48,28 @@ namespace Assignment_8
             set
             {
                 carType = value;
-
+                
                 switch(value)
                 {//TODO: make these actual values
                     case CarType.Semi:
-                        topSpeed = 0.0f;
-                        turningSpeed = 0.0f;
-                        accel = 0.0f;
+                        topSpeed = 10.0f;
+                        turningSpeed = 10.0f;
+                        accel = 10.0f;
+                        mass = 10.0f;
                         break;
 
                     case CarType.SmallCar:
-                        topSpeed = 0.0f;
-                        turningSpeed = 0.0f;
-                        accel = 0.0f;
+                        topSpeed = 10.0f;
+                        turningSpeed = 10.0f;
+                        accel = 10.0f;
+                        mass = 10.0f;
                         break;
 
                     case CarType.Truck:
-                        topSpeed = 0.0f;
-                        turningSpeed = 0.0f;
-                        accel = 0.0f;
+                        topSpeed = 10.0f;
+                        turningSpeed = 10.0f;
+                        accel = 10.0f;
+                        mass = 10.0f;
                         break;
                 }
             }
