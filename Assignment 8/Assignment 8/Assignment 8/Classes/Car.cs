@@ -45,12 +45,9 @@ namespace Assignment_8
             /// Nearly static attribute of top speed.
             /// </summary>
             public static float topSpeed { get; private set; }
-            /// <summary>
-            /// 
-            /// </summary>
             public static float turningSpeed { get; private set; }
             public static float accel { get; private set; }
-            public float mass { get; private set; }
+            public static float mass { get; private set; }
             //master setter for above values.
 
         /// <summary>

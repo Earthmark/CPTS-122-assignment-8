@@ -18,11 +18,13 @@ namespace Assignment_8
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        Car[] cars;
 
         public GameTrack()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            cars = new Car [4];
         }
 
         /// <summary>
@@ -47,6 +49,10 @@ namespace Assignment_8
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            cars[0].skin = Content.Load<Texture2D>("yellow_car");
+            cars[1].skin = Content.Load<Texture2D>("red_car");
+            cars[2].skin = Content.Load<Texture2D>("green_car");
+            cars[3].skin = Content.Load<Texture2D>("blue_car");
             // TODO: use this.Content to load your game content here
             
         }
@@ -85,6 +91,16 @@ namespace Assignment_8
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
+            spriteBatch.Begin();
+            int i = 0;
+            foreach (Car car in cars)
+            {
+                spriteBatch.Draw(car.skin, 
+                    new Rectangle((int)car.position.X, (int)car.position.Y, car.skin.Width, car.skin.Height),
+                    new Rectangle(0, 0, car.skin.Width, car.skin.Height), Color.White,  car.angle, car.carOrigin(), SpriteEffects.None, i);
+                i++;
+            }
+            spriteBatch.End();
 
             base.Draw(gameTime);
         }
