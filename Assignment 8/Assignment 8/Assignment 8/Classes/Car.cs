@@ -120,7 +120,7 @@ namespace Assignment_8
                     return "Truck";
 
                 default:
-                    throw new ArgumentOutOfRangeException ("carType contained an unknown value")
+                    throw new ArgumentOutOfRangeException("carType contained an unknown value");
             }
         }
 
