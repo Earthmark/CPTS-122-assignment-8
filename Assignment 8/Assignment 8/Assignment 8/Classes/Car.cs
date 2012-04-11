@@ -12,16 +12,6 @@ using Microsoft.Xna.Framework.Media;
 
 namespace Assignment_8
 {
-    /// <summary>
-    /// Controls a Car's attributes and model
-    /// </summary>
-    enum CarType : byte
-    {
-        SmallCar,
-        Truck,
-        Semi
-    }
-
     class Car
     {
         /*Base Attributes*/
@@ -62,67 +52,6 @@ namespace Assignment_8
             public static float accel { get; private set; }
             public float mass { get; private set; }
             //master setter for above values.
-
-        /// <summary>
-        /// Changes car attributes based on what is chosen.
-        /// </summary>
-        public CarType carType
-        {
-            get
-            {
-                return carType;
-            }
-            set
-            {
-                carType = value;
-                
-                switch(value)
-                {//TODO: make these actual values
-                    case CarType.Semi:
-                        topSpeed = 10.0f;
-                        turningSpeed = 10.0f;
-                        accel = 10.0f;
-                        mass = 10.0f;
-                        break;
-
-                    case CarType.SmallCar:
-                        topSpeed = 10.0f;
-                        turningSpeed = 10.0f;
-                        accel = 10.0f;
-                        mass = 10.0f;
-                        break;
-
-                    case CarType.Truck:
-                        topSpeed = 10.0f;
-                        turningSpeed = 10.0f;
-                        accel = 10.0f;
-                        mass = 10.0f;
-                        break;
-                }
-            }
-        }
-
-        /// <summary>
-        /// Uses the carType attribute to find correct texture string.
-        /// </summary>
-        /// <returns>Texture ID string</returns>
-        public string modelString()
-        {
-            switch (carType)
-            {
-                case CarType.Semi:
-                    return "Semi";
-
-                case CarType.SmallCar:
-                    return "SmallCar";
-
-                case CarType.Truck:
-                    return "Truck";
-
-                default:
-                    throw new ArgumentOutOfRangeException("carType contained an unknown value");
-            }
-        }
 
         /// <summary>
         /// Corrects the rotation offset
