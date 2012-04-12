@@ -18,7 +18,7 @@ namespace Assignment_8
             /// <summary>
             /// Car texture attribute.
             /// </summary>
-            public Texture2D skin { get; set; }
+            private Texture2D skin { get; set; }
 
             /// <summary>
             /// The Car vector position in the track.
@@ -39,6 +39,32 @@ namespace Assignment_8
             /// The Car's current speed, changes often.
             /// </summary>
             public float currentSpeed { get; set; }
+
+        public Car (int skinToUse)
+        {
+            string carString = "blue_car";
+            switch (skinToUse)
+            {
+                case 1:
+                    carString = "green_car";
+                    break;
+                case 2:
+                    carString = "red_car";
+                    break;
+                case 3:
+                    carString = "yellow_car";
+                    break;
+            }
+
+            skin = Engine.Game.Content.Load<Texture2D>(carString);
+        }
+
+        public void draw()
+        {
+            Engine.SpriteBatch.Draw(skin,
+                    new Rectangle((int)position.X, (int)position.Y, skin.Width, skin.Height),
+                    new Rectangle(0, 0, skin.Width, skin.Height), Color.White, angle, carOrigin(), SpriteEffects.None, 0);
+        }
 
         /*Stats, changed by changing the type*/
             /// <summary>
