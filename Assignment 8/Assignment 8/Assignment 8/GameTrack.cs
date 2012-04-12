@@ -18,7 +18,7 @@ namespace Assignment_8
     {
         GraphicsDeviceManager graphics;
         //use static item for sprite batch.
-        Car car0, car1, car2, car3;
+        Car[] cars;
         
         public GameTrack()
         {
@@ -37,10 +37,7 @@ namespace Assignment_8
             // TODO: Add your initialization logic here
             Engine.Initialize(this, graphics);
 
-            car0 = new Car(0);
-            car1 = new Car(1);
-            car2 = new Car(2);
-            car3 = new Car(3);
+            cars = new Car[4];
 
             base.Initialize();
         }
@@ -52,9 +49,14 @@ namespace Assignment_8
         protected override void LoadContent()
         {
             // Create a new SpriteBatch, which can be used to draw textures.
-            //spriteBatch = new SpriteBatch(GraphicsDevice);
+                //handled in the Engine
 
-            
+
+            cars[0] = new Car(0);
+            cars[1] = new Car(1);
+            cars[2] = new Car(2);
+            cars[3] = new Car(3);
+
             // TODO: use this.Content to load your game content here
             
         }
@@ -95,10 +97,10 @@ namespace Assignment_8
             // TODO: Add your drawing code here
             Engine.SpriteBatch.Begin();
 
-            car0.draw();
-            car1.draw();
-            car2.draw();
-            car3.draw();
+            foreach (Car car in cars)
+            {
+                car.draw();
+            }
 
             Engine.SpriteBatch.End();
 
