@@ -48,8 +48,10 @@ namespace Assignment_8
         public static float mass { get; private set; }
 
         /*Used to make drawing faster*/
-        private Rectangle source { get; set; }
-        private Vector2 carOrigin { get; set; }
+        private static Rectangle source { get; set; }
+        private static Vector2 carOrigin { get; set; }
+        private static Rectangle dest { get; set; }
+        private static float scale { get; set; }
         #endregion
 
         #region Constructor
@@ -71,17 +73,27 @@ namespace Assignment_8
 
             skin = Engine.Game.Content.Load<Texture2D>(carString);
 
-            source = new Rectangle(0, 0, skin.Width, skin.Height);
+            angle = (float)MathHelper.Pi;
+            position = new Vector2(50.0f, 50.0f);
 
+            // Resources used for drawing
+            source = new Rectangle(0, 0, skin.Width, skin.Height);
             carOrigin = new Vector2(skin.Width / 2.0f, skin.Height / 2.0f);
+            dest = new Rectangle((int)position.X, (int)position.Y, skin.Width, skin.Height);
+            scale = 1.0f;
         }
         #endregion
 
+        #region Draw
+        /// <summary>
+        /// Draws the car based on its internal attributes,
+        /// Uses the Engine. call instead of being in GameTrack
+        /// </summary>
         public void draw()
         {
-            Engine.SpriteBatch.Draw(skin, 
-                new Rectangle((int)position.X, (int)position.Y, skin.Width, skin.Height),
-                source, Color.White, angle, carOrigin, SpriteEffects.None, 0);
+            Engine.SpriteBatch.Draw(skin, position, source, Color.White, 
+                angle, carOrigin, scale, SpriteEffects.None, 0);
         }
+        #endregion
     }
 }

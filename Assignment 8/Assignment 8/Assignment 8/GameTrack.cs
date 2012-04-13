@@ -94,14 +94,14 @@ namespace Assignment_8
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            // TODO: Add your drawing code here
             Engine.SpriteBatch.Begin();
+            //call drawing methods after this
 
+            //draw all the cars!
             foreach (Car car in cars)
-            {
-                car.draw();
-            }
+            { car.draw(); }
 
+            //call drawing methods before this
             Engine.SpriteBatch.End();
 
             base.Draw(gameTime);
