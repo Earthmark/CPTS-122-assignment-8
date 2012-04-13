@@ -97,7 +97,11 @@ namespace Assignment_8
             Engine.SpriteBatch.Begin();
             //call drawing methods after this
 
-            //draw all the cars!
+            //draw background
+
+            //draw track
+
+            //draw cars
             foreach (Car car in cars)
             { car.draw(); }
 

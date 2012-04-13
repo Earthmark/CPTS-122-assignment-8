@@ -24,12 +24,12 @@ namespace Assignment_8
         /// <summary>
         /// The Car vector position in the track.
         /// </summary>
-        public Vector2 position { get; set; }
+        private Vector2 position { get; set; }
 
         /// <summary>
         /// The Car angle in theta, use math libraries to work out vectors.
         /// </summary>
-        public float angle { get; set; }
+        private float angle { get; set; }
 
         /// <summary>
         /// Controls if the Car is NPC or Player driven.
@@ -39,13 +39,13 @@ namespace Assignment_8
         /// <summary>
         /// The Car's current speed, changes often.
         /// </summary>
-        public float currentSpeed { get; set; }
+        private float currentSpeed { get; set; }
 
         /*Stats, changed by changing the type*/
-        public static float topSpeed { get; private set; }
-        public static float turningSpeed { get; private set; }
-        public static float accel { get; private set; }
-        public static float mass { get; private set; }
+        private static float topSpeed { get; set; }
+        private static float turningSpeed { get; set; }
+        private static float accel { get; set; }
+        private static float mass { get; set; }
 
         /*Used to make drawing faster*/
         private static Rectangle source { get; set; }
@@ -74,7 +74,7 @@ namespace Assignment_8
             skin = Engine.Game.Content.Load<Texture2D>(carString);
 
             angle = (float)MathHelper.Pi;
-            position = new Vector2(50.0f, 50.0f);
+            position = new Vector2(50.0f + 20 * skinToUse, 50.0f + 20 * skinToUse);
 
             // Resources used for drawing
             source = new Rectangle(0, 0, skin.Width, skin.Height);
