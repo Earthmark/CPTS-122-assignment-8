@@ -49,13 +49,13 @@ namespace Assignment_8
         protected override void LoadContent()
         {
             // Create a new SpriteBatch, which can be used to draw textures.
-                //handled in the Engine
+                //handled in Engine.cs
 
 
-            cars[0] = new Car(0);
-            cars[1] = new Car(1);
-            cars[2] = new Car(2);
-            cars[3] = new Car(3);
+            cars[0] = new Car();
+            cars[1] = new Car();
+            cars[2] = new Car();
+            cars[3] = new Car();
 
             // TODO: use this.Content to load your game content here
             

@@ -52,13 +52,15 @@ namespace Assignment_8
         private static Vector2 carOrigin { get; set; }
         private static Rectangle dest { get; set; }
         private static float scale { get; set; }
+
+        private static int carNum { get; set; }
         #endregion
 
         #region Constructor
-        public Car (int skinToUse)
+        public Car ()
         {
             string carString = "blue_car";
-            switch (skinToUse)
+            switch (carNum)
             {
                 case 1:
                     carString = "green_car";
@@ -74,7 +76,9 @@ namespace Assignment_8
             skin = Engine.Game.Content.Load<Texture2D>(carString);
 
             angle = (float)MathHelper.Pi;
-            position = new Vector2(50.0f + 20 * skinToUse, 50.0f + 20 * skinToUse);
+            position = new Vector2(50.0f + 20 * carNum, 50.0f + 20 * carNum);
+
+            carNum++;
 
             // Resources used for drawing
             source = new Rectangle(0, 0, skin.Width, skin.Height);

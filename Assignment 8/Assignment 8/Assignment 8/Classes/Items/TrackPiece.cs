@@ -16,5 +16,16 @@ namespace Assignment_8
     {
         Texture2D texture;
         Vector2 position;
+
+        public TrackPiece(Texture2D setTexture, Vector2 setPosition)
+        {
+            texture = setTexture;
+            position = setPosition;
+        }
+
+        public void draw()
+        {
+
+        }
     }
 }
