@@ -17,14 +17,13 @@ namespace Assignment_8
     public class GameTrack : Microsoft.Xna.Framework.Game
     {
         GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
+        //use static item for sprite batch.
         Car[] cars;
-
+        
         public GameTrack()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-            cars = new Car [4];
         }
 
         /// <summary>
@@ -36,6 +35,9 @@ namespace Assignment_8
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+            Engine.Initialize(this, graphics);
+
+            cars = new Car[4];
 
             base.Initialize();
         }
@@ -47,12 +49,14 @@ namespace Assignment_8
         protected override void LoadContent()
         {
             // Create a new SpriteBatch, which can be used to draw textures.
-            spriteBatch = new SpriteBatch(GraphicsDevice);
+                //handled in Engine.cs
 
-            cars[0].skin = Content.Load<Texture2D>("yellow_car");
-            cars[1].skin = Content.Load<Texture2D>("red_car");
-            cars[2].skin = Content.Load<Texture2D>("green_car");
-            cars[3].skin = Content.Load<Texture2D>("blue_car");
+
+            cars[0] = new Car();
+            cars[1] = new Car();
+            cars[2] = new Car();
+            cars[3] = new Car();
+
             // TODO: use this.Content to load your game content here
             
         }
@@ -90,17 +94,19 @@ namespace Assignment_8
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            // TODO: Add your drawing code here
-            spriteBatch.Begin();
-            int i = 0;
+            Engine.SpriteBatch.Begin();
+            //call drawing methods after this
+
+            //draw background
+
+            //draw track
+
+            //draw cars
             foreach (Car car in cars)
-            {
-                spriteBatch.Draw(car.skin, 
-                    new Rectangle((int)car.position.X, (int)car.position.Y, car.skin.Width, car.skin.Height),
-                    new Rectangle(0, 0, car.skin.Width, car.skin.Height), Color.White,  car.angle, car.carOrigin(), SpriteEffects.None, i);
-                i++;
-            }
-            spriteBatch.End();
+            { car.draw(); }
+
+            //call drawing methods before this
+            Engine.SpriteBatch.End();
 
             base.Draw(gameTime);
         }
