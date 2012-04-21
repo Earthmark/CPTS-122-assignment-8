@@ -14,12 +14,15 @@ namespace Assignment_8
 {
     class Car
     {
+        enum CarTurnState
+        {
+            Straight,
+            Left,
+            Right
+        }
+
         #region Attributes
         /*Base Attributes*/
-        /// <summary>
-        /// Car texture attribute.
-        /// </summary>
-        private Texture2D skin { get; set; }
 
         /// <summary>
         /// The Car vector position in the track.
@@ -41,11 +44,16 @@ namespace Assignment_8
         /// </summary>
         private float currentSpeed { get; set; }
 
+        private CarTurnState turnState { get; set; }
+
         /*Stats, changed by changing the type*/
         private static float topSpeed { get; set; }
         private static float turningSpeed { get; set; }
         private static float accel { get; set; }
         private static float mass { get; set; }
+
+        /*Car models*/
+        private static List<List<Texture2D>> allCars;
 
         /*Used to make drawing faster*/
         private static Rectangle source { get; set; }
@@ -53,38 +61,56 @@ namespace Assignment_8
         private static Rectangle dest { get; set; }
         private static float scale { get; set; }
 
-        private static int carNum { get; set; }
+        private static int totalCarNum { get; set; }
+        private int carNum { get; set; }
         #endregion
 
         #region Constructor
-        public Car ()
+
+        static Car()
         {
-            string carString = "blue_car";
-            switch (carNum)
-            {
-                case 1:
-                    carString = "green_car";
-                    break;
-                case 2:
-                    carString = "red_car";
-                    break;
-                case 3:
-                    carString = "yellow_car";
-                    break;
-            }
+            allCars = new List<List<Texture2D>>{
+                new List<Texture2D>
+                {
+                    Engine.Game.Content.Load<Texture2D>("blue_straight"),
+                    Engine.Game.Content.Load<Texture2D>("blue_left"),
+                    Engine.Game.Content.Load<Texture2D>("blue_right"),
+                },
+                new List<Texture2D>
+                {
+                    Engine.Game.Content.Load<Texture2D>("green_straight"),
+                    Engine.Game.Content.Load<Texture2D>("green_left"),
+                    Engine.Game.Content.Load<Texture2D>("green_right"),
+                },
+                new List<Texture2D>
+                {
+                    Engine.Game.Content.Load<Texture2D>("yellow_straight"),
+                    Engine.Game.Content.Load<Texture2D>("yellow_left"),
+                    Engine.Game.Content.Load<Texture2D>("yellow_right"),
+                },
+                new List<Texture2D>
+                {
+                    Engine.Game.Content.Load<Texture2D>("red_straight"),
+                    Engine.Game.Content.Load<Texture2D>("red_left"),
+                    Engine.Game.Content.Load<Texture2D>("red_right"),
+                }
+            };
 
-            skin = Engine.Game.Content.Load<Texture2D>(carString);
 
-            angle = (float)MathHelper.Pi;
-            position = new Vector2(50.0f + 20 * carNum, 50.0f + 20 * carNum);
-
-            carNum++;
-
+            Texture2D skin = allCars[0][0];//0,0 car us used as template, as it has the same size as the other cars.
             // Resources used for drawing
             source = new Rectangle(0, 0, skin.Width, skin.Height);
             carOrigin = new Vector2(skin.Width / 2.0f, skin.Height / 2.0f);
-            dest = new Rectangle((int)position.X, (int)position.Y, skin.Width, skin.Height);
             scale = 1.0f;
+        }
+
+        public Car ()
+        {
+            carNum = totalCarNum;
+            totalCarNum++;
+
+            angle = (float)MathHelper.Pi;
+            position = new Vector2(50.0f + 20 * carNum, 50.0f + 20 * carNum);
         }
         #endregion
 
@@ -95,7 +121,7 @@ namespace Assignment_8
         /// </summary>
         public void draw()
         {
-            Engine.SpriteBatch.Draw(skin, position, source, Color.White, 
+            Engine.SpriteBatch.Draw(allCars[carNum][(int)turnState], position, source, Color.White, 
                 angle, carOrigin, scale, SpriteEffects.None, 0);
         }
         #endregion
