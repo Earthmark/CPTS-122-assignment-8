@@ -109,6 +109,7 @@
   <ItemGroup>
     <Compile Include="Classes\Items\Car.cs" />
     <Compile Include="Classes\Engine.cs" />
+    <Compile Include="Classes\Items\Collision.cs" />
     <Compile Include="Classes\Items\TrackManager.cs" />
     <Compile Include="Classes\Items\TrackPiece.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -19,8 +19,9 @@ namespace Assignment_8
         GraphicsDeviceManager graphics;
         //use static item for sprite batch.
         Car[] cars;
+        
         TrackManager trackManager = new TrackManager();
-        Collision collision;
+
 
         KeyboardState oldState;
         
@@ -116,37 +117,59 @@ namespace Assignment_8
             }
             if (Collision.CarToCar((int)cars[0].position.X, (int)cars[0].position.Y, (int)Car.source.Width, (int)Car.source.Height, (int)cars[1].position.X, (int)cars[1].position.Y, (int)Car.source.Width, (int)Car.source.Height))
             {
-                cars[0].currentSpeed *= -(1);
-                cars[1].currentSpeed *= -(1);
+                if (cars[0].currentSpeed > 0)
+                    cars[0].currentSpeed *= -(1);
+                else
+                    cars[0].currentSpeed = 2;
+                //if (cars[1].currentSpeed > 0)
+                //    cars[1].currentSpeed = -2;
+                //else
+                //    cars[1].currentSpeed = 2;
             }
             if (Collision.CarToCar((int)cars[0].position.X, (int)cars[0].position.Y, (int)Car.source.Width, (int)Car.source.Height, (int)cars[2].position.X, (int)cars[2].position.Y, (int)Car.source.Width, (int)Car.source.Height))
             {
-                cars[0].currentSpeed *= -(1);
-                cars[2].currentSpeed *= -(1);
+                cars[0].currentSpeed = -2;
             }
             if (Collision.CarToCar((int)cars[0].position.X, (int)cars[0].position.Y, (int)Car.source.Width, (int)Car.source.Height, (int)cars[3].position.X, (int)cars[3].position.Y, (int)Car.source.Width, (int)Car.source.Height))
             {
-                cars[0].currentSpeed *= -(1);
-                cars[3].currentSpeed *= -(1);
-            }
-            if (Collision.CarToCar((int)cars[1].position.X, (int)cars[1].position.Y, (int)Car.source.Width, (int)Car.source.Height, (int)cars[2].position.X, (int)cars[2].position.Y, (int)Car.source.Width, (int)Car.source.Height))
-            {
-                cars[1].currentSpeed *= -(1);
-                cars[2].currentSpeed *= -(1);
-            }
-            if (Collision.CarToCar((int)cars[1].position.X, (int)cars[1].position.Y, (int)Car.source.Width, (int)Car.source.Height, (int)cars[3].position.X, (int)cars[3].position.Y, (int)Car.source.Width, (int)Car.source.Height))
-            {
-                cars[1].currentSpeed *= -(1);
-                cars[3].currentSpeed *= -(1);
-            }
-            if (Collision.CarToCar((int)cars[2].position.X, (int)cars[2].position.Y, (int)Car.source.Width, (int)Car.source.Height, (int)cars[3].position.X, (int)cars[3].position.Y, (int)Car.source.Width, (int)Car.source.Height))
-            {
-                cars[2].currentSpeed *= -(1);
-                cars[3].currentSpeed *= -(1);
+                cars[0].currentSpeed = -2;
             }
        
             
 
+            ////run through the list of cars and check if they are human (only way input is gathered
+            //foreach (Car car in cars)
+            //{
+            //    if (car.isHuman)
+            //    {
+            //        //create a new instance for keyboard state and check for arrow keys
+            //        KeyboardState newState = Keyboard.GetState();
+            //        //Left arrow makes negative angle, Right arrow a positive one
+            //        if (newState.IsKeyDown(Keys.Left))
+            //        {
+            //            car.angle -= 0.1f;
+            //        }
+            //        else if (newState.IsKeyDown(Keys.Right))
+            //        {
+            //            car.angle += 0.1f;
+            //        }
+            //        //Up arrow adds to the car's position, Down arrow subtracts from it.
+            //        //Create new Vector2 for momentum with the angles from above, then add the current speed, update position
+            //        if (newState.IsKeyDown(Keys.Up))
+            //        {
+            //            Vector2 momentum = new Vector2((float)Math.Cos(car.angle), (float)Math.Sin(car.angle));
+            //            momentum *= car.currentSpeed;
+            //            car.position += momentum;
+            //        }
+            //        else if (newState.IsKeyDown(Keys.Down))
+            //        {
+            //            Vector2 momentum = new Vector2((float)Math.Cos(car.angle), (float)Math.Sin(car.angle));
+            //            momentum *= car.currentSpeed;
+            //            car.position -= momentum;
+            //        }
+            //        oldState = newState;
+            //    }
+            //}
         }
 
         /// <summary>
