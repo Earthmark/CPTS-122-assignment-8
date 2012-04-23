@@ -61,6 +61,8 @@ namespace Assignment_8
             cars[2] = new Car();
             cars[3] = new Car();
 
+            cars[0].isHuman = true;
+
             // TODO: use this.Content to load your game content here
             
         }
@@ -107,7 +109,7 @@ namespace Assignment_8
                     {
                         car.angle -= 0.1f;
                     }
-                    else if (newState.IsKeyDown(Keys.Right))
+                    if (newState.IsKeyDown(Keys.Right))
                     {
                         car.angle += 0.1f;
                     }
@@ -116,19 +118,11 @@ namespace Assignment_8
                     //Create new Vector2 for momentum with the angles from above, then add the current speed, update position
                     if (newState.IsKeyDown(Keys.Up))
                     {
-                        Vector2 momentum = new Vector2((float)Math.Cos(car.angle), (float)Math.Sin(car.angle));
-
-                        momentum *= car.currentSpeed;
-
-                        car.position += momentum;
+                        car.position += (new Vector2 ((float)(2 * Math.Cos(car.angle)), (float)(2 * Math.Sin(car.angle)))) * 2;
                     }
-                    else if (newState.IsKeyDown(Keys.Down))
+                    if (newState.IsKeyDown(Keys.Down))
                     {
-                        Vector2 momentum = new Vector2((float)Math.Cos(car.angle), (float)Math.Sin(car.angle));
-
-                        momentum *= car.currentSpeed;
-
-                        car.position -= momentum;
+                        car.position -= (new Vector2((float)(2 * Math.Cos(car.angle)), (float)(2 * Math.Sin(car.angle)))) * 2;
                     }
 
                     oldState = newState;
