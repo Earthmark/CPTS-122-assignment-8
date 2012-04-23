@@ -31,7 +31,11 @@ namespace Assignment_8
         Up,
         Down,
         Left,
-        Right
+        Right,
+        Skin1,
+        Skin2,
+        Skin3,
+        Skin4
     }
 
     class Car
@@ -233,6 +237,24 @@ namespace Assignment_8
                     currentSpeed = 0;
                 }
             }
+
+
+            if (keyState.IsKeyDown(interfaceKey(ControlKey.Skin1)))
+            {
+                carNum = 0;
+            } 
+            else if (keyState.IsKeyDown(interfaceKey(ControlKey.Skin2)))
+            {
+                carNum = 1;
+            } 
+            else if (keyState.IsKeyDown(interfaceKey(ControlKey.Skin3)))
+            {
+                carNum = 2;
+            } 
+            else if (keyState.IsKeyDown(interfaceKey(ControlKey.Skin4)))
+            {
+                carNum = 3;
+            }
         }
 
         private void computerUpdate()
@@ -244,6 +266,23 @@ namespace Assignment_8
         {
             position.X += (float)(currentSpeed * Math.Cos(angle));
             position.Y += (float)(currentSpeed * Math.Sin(angle));
+
+            if (position.X < 0)
+            {
+                position.X = 0;
+            }
+            else if (position.X > Engine.Game.GraphicsDevice.Viewport.Width)
+            {
+                position.X = Engine.Game.GraphicsDevice.Viewport.Width;
+            }
+            if (position.Y < 0)
+            {
+                position.Y = 0;
+            }
+            else if (position.Y > Engine.Game.GraphicsDevice.Viewport.Height)
+            {
+                position.Y = Engine.Game.GraphicsDevice.Viewport.Height;
+            }
         }
 
         private Keys interfaceKey(ControlKey key)
@@ -261,6 +300,14 @@ namespace Assignment_8
                             return Keys.Left;
                         case ControlKey.Right:
                             return Keys.Right;
+                        case ControlKey.Skin1:
+                            return Keys.NumPad1;
+                        case ControlKey.Skin2:
+                            return Keys.NumPad2;
+                        case ControlKey.Skin3:
+                            return Keys.NumPad3;
+                        case ControlKey.Skin4:
+                            return Keys.NumPad4;
                     }
                     break;
                 case CarController.Player2:
@@ -274,6 +321,14 @@ namespace Assignment_8
                             return Keys.A;
                         case ControlKey.Right:
                             return Keys.D;
+                        case ControlKey.Skin1:
+                            return Keys.D1;
+                        case ControlKey.Skin2:
+                            return Keys.D2;
+                        case ControlKey.Skin3:
+                            return Keys.D3;
+                        case ControlKey.Skin4:
+                            return Keys.D4;
                     }
                     break;
             }
