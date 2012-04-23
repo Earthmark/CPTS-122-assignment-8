@@ -19,6 +19,8 @@ namespace Assignment_8
         GraphicsDeviceManager graphics;
         //use static item for sprite batch.
         Car[] cars;
+
+        KeyboardState oldState;
         
         public GameTrack()
         {
@@ -40,6 +42,8 @@ namespace Assignment_8
             cars = new Car[4];
 
             base.Initialize();
+
+            oldState = Keyboard.GetState();
         }
 
         /// <summary>
@@ -82,8 +86,54 @@ namespace Assignment_8
                 this.Exit();
 
             // TODO: Add your update logic here
+            UpdateInput();
 
             base.Update(gameTime);
+        }
+
+        //Updating input from keyboard
+        private void UpdateInput()
+        {
+            //run through the list of cars and check if they are human (only way input is gathered
+            foreach (Car car in cars)
+            {
+                if (car.isHuman)
+                {
+                    //create a new instance for keyboard state and check for arrow keys
+                    KeyboardState newState = Keyboard.GetState();
+
+                    //Left arrow makes negative angle, Right arrow a positive one
+                    if (newState.IsKeyDown(Keys.Left))
+                    {
+                        car.angle -= 0.1f;
+                    }
+                    else if (newState.IsKeyDown(Keys.Right))
+                    {
+                        car.angle += 0.1f;
+                    }
+
+                    //Up arrow adds to the car's position, Down arrow subtracts from it.
+                    //Create new Vector2 for momentum with the angles from above, then add the current speed, update position
+                    if (newState.IsKeyDown(Keys.Up))
+                    {
+                        Vector2 momentum = new Vector2((float)Math.Cos(car.angle), (float)Math.Sin(car.angle));
+
+                        momentum *= car.currentSpeed;
+
+                        car.position += momentum;
+                    }
+                    else if (newState.IsKeyDown(Keys.Down))
+                    {
+                        Vector2 momentum = new Vector2((float)Math.Cos(car.angle), (float)Math.Sin(car.angle));
+
+                        momentum *= car.currentSpeed;
+
+                        car.position -= momentum;
+                    }
+
+                    oldState = newState;
+                }
+            }
         }
 
         /// <summary>

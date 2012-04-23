@@ -27,12 +27,12 @@ namespace Assignment_8
         /// <summary>
         /// The Car vector position in the track.
         /// </summary>
-        private Vector2 position { get; set; }
+        public Vector2 position { get; set; }
 
         /// <summary>
         /// The Car angle in theta, use math libraries to work out vectors.
         /// </summary>
-        private float angle { get; set; }
+        public float angle { get; set; }
 
         /// <summary>
         /// Controls if the Car is NPC or Player driven.
@@ -42,7 +42,7 @@ namespace Assignment_8
         /// <summary>
         /// The Car's current speed, changes often.
         /// </summary>
-        private float currentSpeed { get; set; }
+        public float currentSpeed { get; set; }
 
         private CarTurnState turnState { get; set; }
 
