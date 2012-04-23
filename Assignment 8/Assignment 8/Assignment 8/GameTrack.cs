@@ -61,7 +61,8 @@ namespace Assignment_8
             cars[2] = new Car();
             cars[3] = new Car();
 
-            cars[0].isHuman = true;
+            cars[0].controller = CarController.Player1;
+            cars[1].controller = CarController.Player2;
 
             // TODO: use this.Content to load your game content here
             
@@ -97,10 +98,10 @@ namespace Assignment_8
         private void UpdateInput()
         {
 
-            KeyboardState newState = Keyboard.GetState();
+            //KeyboardState newState = Keyboard.GetState();
 
             foreach (Car car in cars)
-            { car.update(newState); }
+            { car.update(); }
 
             ////run through the list of cars and check if they are human (only way input is gathered
             //foreach (Car car in cars)
