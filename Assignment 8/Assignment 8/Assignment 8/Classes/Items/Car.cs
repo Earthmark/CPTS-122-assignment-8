@@ -128,7 +128,7 @@ namespace Assignment_8
         public void draw()
         {
             Engine.SpriteBatch.Draw(allCars[carNum][(int)turnState], position, source, Color.White, 
-                angle - MathHelper.PiOver2, carOrigin, scale, SpriteEffects.None, 0);
+                angle, carOrigin, scale, SpriteEffects.None, 0);
         }
         #endregion
 
