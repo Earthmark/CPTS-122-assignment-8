@@ -62,6 +62,7 @@ namespace Assignment_8
             cars[3] = new Car();
 
             cars[0].controller = CarController.Player1;
+            cars[1].controller = CarController.Player2;
 
             // TODO: use this.Content to load your game content here
             

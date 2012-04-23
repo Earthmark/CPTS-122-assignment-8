@@ -255,6 +255,10 @@ namespace Assignment_8
                             return Keys.Up;
                         case ControlKey.Down:
                             return Keys.Down;
+                        case ControlKey.Left:
+                            return Keys.Left;
+                        case ControlKey.Right:
+                            return Keys.Right;
                     }
                     break;
                 case CarController.Player2:
@@ -264,6 +268,10 @@ namespace Assignment_8
                             return Keys.W;
                         case ControlKey.Down:
                             return Keys.S;
+                        case ControlKey.Left:
+                            return Keys.A;
+                        case ControlKey.Right:
+                            return Keys.D;
                     }
                     break;
             }
