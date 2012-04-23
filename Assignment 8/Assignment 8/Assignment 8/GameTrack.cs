@@ -39,6 +39,10 @@ namespace Assignment_8
         {
             // TODO: Add your initialization logic here
             Engine.Initialize(this, graphics);
+            graphics.PreferredBackBufferWidth = 600;
+            graphics.PreferredBackBufferHeight = 600;
+            graphics.IsFullScreen = false;
+            graphics.ApplyChanges();
 
             cars = new Car[4];
 
