@@ -42,62 +42,62 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="blue_left.png">
+    <Compile Include="Cars\Blue\blue_left.png">
       <Name>blue_left</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="blue_right.png">
+    <Compile Include="Cars\Blue\blue_right.png">
       <Name>blue_right</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="blue_straight.png">
+    <Compile Include="Cars\Blue\blue_straight.png">
       <Name>blue_straight</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="green_left.png">
+    <Compile Include="Cars\Green\green_left.png">
       <Name>green_left</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="green_right.png">
+    <Compile Include="Cars\Green\green_right.png">
       <Name>green_right</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="green_straight.png">
+    <Compile Include="Cars\Green\green_straight.png">
       <Name>green_straight</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="red_left.png">
+    <Compile Include="Cars\Red\red_left.png">
       <Name>red_left</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="red_right.png">
+    <Compile Include="Cars\Red\red_right.png">
       <Name>red_right</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="red_straight.png">
+    <Compile Include="Cars\Red\red_straight.png">
       <Name>red_straight</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="yellow_left.png">
+    <Compile Include="Cars\Yellow\yellow_left.png">
       <Name>yellow_left</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="yellow_right.png">
+    <Compile Include="Cars\Yellow\yellow_right.png">
       <Name>yellow_right</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="yellow_straight.png">
+    <Compile Include="Cars\Yellow\yellow_straight.png">
       <Name>yellow_straight</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
