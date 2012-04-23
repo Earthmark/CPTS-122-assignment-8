@@ -20,6 +20,7 @@ namespace Assignment_8
         //use static item for sprite batch.
         Car[] cars;
         TrackManager trackManager = new TrackManager();
+        Collision collision;
 
         KeyboardState oldState;
         
@@ -68,6 +69,8 @@ namespace Assignment_8
 
             cars[0].controller = CarController.Player1;
             cars[1].controller = CarController.Player2;
+            cars[2].controller = CarController.Player2;
+            cars[3].controller = CarController.Player2;
 
             trackManager.loadTrack1();
 
@@ -108,7 +111,30 @@ namespace Assignment_8
             //KeyboardState newState = Keyboard.GetState();
 
             foreach (Car car in cars)
-            { car.update(); }
+            { 
+                car.update();
+            }
+            if (Collision.CarToCar((int)cars[0].position.X, (int)cars[0].position.Y, (int)Car.source.Width, (int)Car.source.Height, (int)cars[1].position.X, (int)cars[1].position.Y, (int)Car.source.Width, (int)Car.source.Height))
+            {
+                if (cars[0].currentSpeed > 0)
+                    cars[0].currentSpeed *= -(1);
+                else
+                    cars[0].currentSpeed = 2;
+                //if (cars[1].currentSpeed > 0)
+                //    cars[1].currentSpeed = -2;
+                //else
+                //    cars[1].currentSpeed = 2;
+            }
+            if (Collision.CarToCar((int)cars[0].position.X, (int)cars[0].position.Y, (int)Car.source.Width, (int)Car.source.Height, (int)cars[2].position.X, (int)cars[2].position.Y, (int)Car.source.Width, (int)Car.source.Height))
+            {
+                cars[0].currentSpeed = -2;
+            }
+            if (Collision.CarToCar((int)cars[0].position.X, (int)cars[0].position.Y, (int)Car.source.Width, (int)Car.source.Height, (int)cars[3].position.X, (int)cars[3].position.Y, (int)Car.source.Width, (int)Car.source.Height))
+            {
+                cars[0].currentSpeed = -2;
+            }
+       
+            
 
             ////run through the list of cars and check if they are human (only way input is gathered
             //foreach (Car car in cars)
