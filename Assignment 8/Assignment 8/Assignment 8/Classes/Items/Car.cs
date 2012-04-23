@@ -266,6 +266,23 @@ namespace Assignment_8
         {
             position.X += (float)(currentSpeed * Math.Cos(angle));
             position.Y += (float)(currentSpeed * Math.Sin(angle));
+
+            if (position.X < 0)
+            {
+                position.X = 0;
+            }
+            else if (position.X > Engine.Game.GraphicsDevice.Viewport.Width)
+            {
+                position.X = Engine.Game.GraphicsDevice.Viewport.Width;
+            }
+            if (position.Y < 0)
+            {
+                position.Y = 0;
+            }
+            else if (position.Y > Engine.Game.GraphicsDevice.Viewport.Height)
+            {
+                position.Y = Engine.Game.GraphicsDevice.Viewport.Height;
+            }
         }
 
         private Keys interfaceKey(ControlKey key)
