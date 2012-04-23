@@ -131,7 +131,7 @@ namespace Assignment_8
             totalCarNum++;
 
             angle = (float)MathHelper.Pi;
-            position = new Vector2(50.0f + 20 * carNum, 50.0f + 20 * carNum);
+            position = new Vector2(50.0f + 40 * carNum, 50.0f + 40 * carNum);
         }
         #endregion
 
