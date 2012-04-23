@@ -120,12 +120,12 @@ namespace Assignment_8
             carOrigin = new Vector2(skin.Width / 2.0f, skin.Height / 2.0f);
             scale = 1.0f;
             
-            topSpeed = 10.0f;
-            turningSpeed = 0.1f;
-            turningSpeedMinStart = 2.5f;
-            accel = 0.5f;
-            friction = 0.1f;
-            mass = 10.0f;
+            topSpeed = 5.0f;
+            turningSpeed = 0.05f;
+            turningSpeedMinStart = 1.25f;
+            accel = 0.25f;
+            friction = 0.05f;
+            mass = 5.0f;
             
         }
 
