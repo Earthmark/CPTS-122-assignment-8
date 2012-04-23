@@ -59,17 +59,15 @@ namespace Assignment_8
         public CarController controller;
 
         public static Rectangle source;
-        public int height
-        { get { return source.Height; } }
-        public int width
-        { get { return source.Width; } }
-
-
+            public int height
+            { get { return source.Height; } }
+            public int width
+            { get { return source.Width; } }
 
         /// <summary>
         /// The Car's current speed, changes often.
         /// </summary>
-        public float currentSpeed;
+        public Vector2 currentSpeed;
 
         private CarTurnState turnState;
 
@@ -139,6 +137,7 @@ namespace Assignment_8
             carNum = totalCarNum;
             totalCarNum++;
 
+            currentSpeed = new Vector2();
             angle = (float)MathHelper.Pi;
             position = new Vector2(50.0f + 40 * carNum, 50.0f + 40 * carNum);
         }
@@ -180,15 +179,14 @@ namespace Assignment_8
 
             if (keyState.IsKeyDown(interfaceKey(ControlKey.Left)))
             {
-                if (currentSpeed > 0)
+                if (currentSpeed.Length() > 0)
                 {
-                    angle -= currentSpeed < turningSpeedMinStart ? turningSpeed * (currentSpeed / turningSpeedMinStart) : turningSpeed;
                 }
-                else if (currentSpeed < 0)
+                else if (currentSpeed.Length() < 0)
                 {
-                    angle += currentSpeed > -turningSpeedMinStart ? turningSpeed * (-currentSpeed / turningSpeedMinStart) : turningSpeed;
                 }
 
+               
                 turnState = CarTurnState.Left;
             }
             if (keyState.IsKeyDown(interfaceKey(ControlKey.Right)))
