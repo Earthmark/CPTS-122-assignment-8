@@ -154,17 +154,35 @@ namespace Assignment_8
 
             if (keyState.IsKeyDown(Keys.Left))
             {
-                angle -= turningSpeed;
+                if (currentSpeed > 0)
+                {
+                    angle -= turningSpeed;
+                }
+                else if (currentSpeed < 0)
+                {
+                    angle += turningSpeed;
+                }
 
                 turnState = CarTurnState.Left;
             }
             if (keyState.IsKeyDown(Keys.Right))
             {
-                angle += turningSpeed;
+                if (currentSpeed > 0)
+                {
+                    angle += turningSpeed;
+                }
+                else if (currentSpeed < 0)
+                {
+                    angle -= turningSpeed;
+                }
 
                 turnState = CarTurnState.Right;
             }
             //acceleration
+
+            bool causedFriction = false;
+            //used to stop the car and prevent a flip thing where the car cant actually stop.
+
             if (keyState.IsKeyDown(Keys.Up) && currentSpeed < topSpeed)
             {
                 currentSpeed += accel;
@@ -177,6 +195,7 @@ namespace Assignment_8
             else if (currentSpeed > 0)
             {
                 currentSpeed -= friction;
+                causedFriction = true;
             }
 
             if (keyState.IsKeyDown(Keys.Down) && currentSpeed > -topSpeed)
@@ -191,6 +210,11 @@ namespace Assignment_8
             else if (currentSpeed < 0)
             {
                 currentSpeed += friction;
+
+                if (causedFriction)
+                {
+                    currentSpeed = 0;
+                }
             }
         }
 
