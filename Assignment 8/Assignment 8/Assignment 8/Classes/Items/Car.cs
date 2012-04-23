@@ -49,6 +49,7 @@ namespace Assignment_8
         /*Stats, changed by changing the type*/
         private static float topSpeed;
         private static float turningSpeed;
+        private static float turningSpeedMinStart;
         private static float accel;
         private static float mass;
         private static float friction;
@@ -108,6 +109,7 @@ namespace Assignment_8
             accel = 0.5f;
             mass = 10.0f;
             friction = 0.1f;
+            turningSpeedMinStart = 2.5f;
         }
 
         public Car ()
@@ -156,11 +158,11 @@ namespace Assignment_8
             {
                 if (currentSpeed > 0)
                 {
-                    angle -= turningSpeed;
+                    angle -= currentSpeed < turningSpeedMinStart ? turningSpeed * (currentSpeed / turningSpeedMinStart) : turningSpeed;
                 }
                 else if (currentSpeed < 0)
                 {
-                    angle += turningSpeed;
+                    angle += currentSpeed > -turningSpeedMinStart ? turningSpeed * (-currentSpeed / turningSpeedMinStart) : turningSpeed;
                 }
 
                 turnState = CarTurnState.Left;
@@ -169,11 +171,11 @@ namespace Assignment_8
             {
                 if (currentSpeed > 0)
                 {
-                    angle += turningSpeed;
+                    angle += currentSpeed < turningSpeedMinStart ? turningSpeed * (currentSpeed / turningSpeedMinStart) : turningSpeed;
                 }
                 else if (currentSpeed < 0)
                 {
-                    angle -= turningSpeed;
+                    angle -= currentSpeed > -turningSpeedMinStart ? turningSpeed * (-currentSpeed / turningSpeedMinStart) : turningSpeed;
                 }
 
                 turnState = CarTurnState.Right;
