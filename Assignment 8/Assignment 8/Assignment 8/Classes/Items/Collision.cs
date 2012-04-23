@@ -13,11 +13,11 @@ namespace Assignment_8
     {
         public static Collision CDPerformedWith { get; set; }
 
-        public static bool CarToCar(int x1,int y1,int width1,int height1,int x2,int y2,int width2,int height2)
+        public static bool CarToCar(Car car1, Car car2)
         {
-            Rectangle rectangleA = new Rectangle((int)x1, (int)y1, width1, height1);
-            Rectangle rectangleB = new Rectangle((int)x2, (int)y2, width2, height2);
-
+            Rectangle rectangleA = new Rectangle((int)car1.position.X, (int)car1.position.Y, car1.width, car1.height);
+            Rectangle rectangleB = new Rectangle((int)car2.position.Y, (int)car2.position.Y, car2.width, car2.width);
+            
             int top = Math.Max(rectangleA.Top, rectangleB.Top);
             int bottom = Math.Min(rectangleA.Bottom, rectangleB.Bottom);
             int left = Math.Max(rectangleA.Left, rectangleB.Left);

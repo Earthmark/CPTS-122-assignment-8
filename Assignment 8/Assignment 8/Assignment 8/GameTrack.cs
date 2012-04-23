@@ -111,9 +111,21 @@ namespace Assignment_8
             //KeyboardState newState = Keyboard.GetState();
 
             foreach (Car car in cars)
-            { 
-                car.update();
+            { car.update(); }
+
+            foreach (Car car in cars)
+            {
+                foreach (Car collideCar in cars)
+                {
+                    if ( !(car.Equals(collideCar)) )
+                    {
+                        if (Collision.CarToCar(car, collideCar))
+                        {
+                        }
+                    }
+                }
             }
+
             if (Collision.CarToCar((int)cars[0].position.X, (int)cars[0].position.Y, (int)Car.source.Width, (int)Car.source.Height, (int)cars[1].position.X, (int)cars[1].position.Y, (int)Car.source.Width, (int)Car.source.Height))
             {
                 cars[0].currentSpeed *= -(1);

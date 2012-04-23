@@ -59,6 +59,11 @@ namespace Assignment_8
         public CarController controller;
 
         public static Rectangle source;
+        public int height
+        { get { return source.Height; } }
+        public int width
+        { get { return source.Width; } }
+
 
 
         /// <summary>
