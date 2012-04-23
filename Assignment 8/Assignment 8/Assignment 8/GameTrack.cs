@@ -61,6 +61,7 @@ namespace Assignment_8
             cars[2] = new Car();
             cars[3] = new Car();
 
+            cars[0].isHuman = true;
             // TODO: use this.Content to load your game content here
             
         }
@@ -94,46 +95,52 @@ namespace Assignment_8
         //Updating input from keyboard
         private void UpdateInput()
         {
-            //run through the list of cars and check if they are human (only way input is gathered
+
+            KeyboardState newState = Keyboard.GetState();
+
             foreach (Car car in cars)
-            {
-                if (car.isHuman)
-                {
-                    //create a new instance for keyboard state and check for arrow keys
-                    KeyboardState newState = Keyboard.GetState();
+            { car.update(newState); }
 
-                    //Left arrow makes negative angle, Right arrow a positive one
-                    if (newState.IsKeyDown(Keys.Left))
-                    {
-                        car.angle -= 0.1f;
-                    }
-                    else if (newState.IsKeyDown(Keys.Right))
-                    {
-                        car.angle += 0.1f;
-                    }
+            ////run through the list of cars and check if they are human (only way input is gathered
+            //foreach (Car car in cars)
+            //{
+            //    if (car.isHuman)
+            //    {
+            //        //create a new instance for keyboard state and check for arrow keys
+            //        KeyboardState newState = Keyboard.GetState();
 
-                    //Up arrow adds to the car's position, Down arrow subtracts from it.
-                    //Create new Vector2 for momentum with the angles from above, then add the current speed, update position
-                    if (newState.IsKeyDown(Keys.Up))
-                    {
-                        Vector2 momentum = new Vector2((float)Math.Cos(car.angle), (float)Math.Sin(car.angle));
+            //        //Left arrow makes negative angle, Right arrow a positive one
+            //        if (newState.IsKeyDown(Keys.Left))
+            //        {
+            //            car.angle -= 0.1f;
+            //        }
+            //        else if (newState.IsKeyDown(Keys.Right))
+            //        {
+            //            car.angle += 0.1f;
+            //        }
 
-                        momentum *= car.currentSpeed;
+            //        //Up arrow adds to the car's position, Down arrow subtracts from it.
+            //        //Create new Vector2 for momentum with the angles from above, then add the current speed, update position
+            //        if (newState.IsKeyDown(Keys.Up))
+            //        {
+            //            Vector2 momentum = new Vector2((float)Math.Cos(car.angle), (float)Math.Sin(car.angle));
 
-                        car.position += momentum;
-                    }
-                    else if (newState.IsKeyDown(Keys.Down))
-                    {
-                        Vector2 momentum = new Vector2((float)Math.Cos(car.angle), (float)Math.Sin(car.angle));
+            //            momentum *= car.currentSpeed;
 
-                        momentum *= car.currentSpeed;
+            //            car.position += momentum;
+            //        }
+            //        else if (newState.IsKeyDown(Keys.Down))
+            //        {
+            //            Vector2 momentum = new Vector2((float)Math.Cos(car.angle), (float)Math.Sin(car.angle));
 
-                        car.position -= momentum;
-                    }
+            //            momentum *= car.currentSpeed;
 
-                    oldState = newState;
-                }
-            }
+            //            car.position -= momentum;
+            //        }
+
+            //        oldState = newState;
+            //    }
+            //}
         }
 
         /// <summary>
