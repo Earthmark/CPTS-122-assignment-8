@@ -111,8 +111,8 @@ namespace Assignment_8
             {
                 if (cars[0].currentSpeed > 0)
                     cars[0].currentSpeed *= -(1);
-                //else
-                //    cars[0].currentSpeed = 2;
+                else
+                    cars[0].currentSpeed = 2;
                 //if (cars[1].currentSpeed > 0)
                 //    cars[1].currentSpeed = -2;
                 //else
