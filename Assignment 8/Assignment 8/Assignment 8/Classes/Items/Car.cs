@@ -54,6 +54,9 @@ namespace Assignment_8
         /// </summary>
         public CarController controller;
 
+        public static Rectangle source;
+
+
         /// <summary>
         /// The Car's current speed, changes often.
         /// </summary>
@@ -73,7 +76,6 @@ namespace Assignment_8
         private static List<List<Texture2D>> allCars;
 
         /*Used to make drawing faster*/
-        private static Rectangle source;
         private static Vector2 carOrigin;
         private static float scale;
 
@@ -120,6 +122,7 @@ namespace Assignment_8
             accel = 0.5f;
             friction = 0.1f;
             mass = 10.0f;
+            
         }
 
         public Car ()
