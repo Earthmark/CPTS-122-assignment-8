@@ -19,6 +19,7 @@ namespace Assignment_8
         GraphicsDeviceManager graphics;
         //use static item for sprite batch.
         Car[] cars;
+        TrackManager trackManager = new TrackManager();
 
         KeyboardState oldState;
         
@@ -63,6 +64,8 @@ namespace Assignment_8
 
             cars[0].controller = CarController.Player1;
             cars[1].controller = CarController.Player2;
+
+            trackManager.loadTrack1();
 
             // TODO: use this.Content to load your game content here
             
@@ -144,7 +147,7 @@ namespace Assignment_8
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Green);
 
             Engine.SpriteBatch.Begin();
             //call drawing methods after this
@@ -152,6 +155,7 @@ namespace Assignment_8
             //draw background
 
             //draw track
+            trackManager.drawTrack();
 
             //draw cars
             foreach (Car car in cars)
