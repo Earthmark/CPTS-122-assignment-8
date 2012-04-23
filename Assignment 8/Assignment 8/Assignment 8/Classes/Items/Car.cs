@@ -12,15 +12,30 @@ using Microsoft.Xna.Framework.Media;
 
 namespace Assignment_8
 {
+    enum CarTurnState
+    {
+        Straight,
+        Left,
+        Right
+    }
+
+    enum CarController
+    {
+        Nothing,
+        Player1,
+        Player2
+    }
+
+    enum ControlKey
+    {
+        Up,
+        Down,
+        Left,
+        Right
+    }
+
     class Car
     {
-        enum CarTurnState
-        {
-            Straight,
-            Left,
-            Right
-        }
-
         #region Attributes
         /*Base Attributes*/
 
@@ -37,7 +52,7 @@ namespace Assignment_8
         /// <summary>
         /// Controls if the Car is NPC or Player driven.
         /// </summary>
-        public bool isHuman;
+        public CarController controller;
 
         /// <summary>
         /// The Car's current speed, changes often.
@@ -67,33 +82,28 @@ namespace Assignment_8
         #endregion
 
         #region Constructor
-
         static Car()
         {
-            allCars = new List<List<Texture2D>>{
-                new List<Texture2D>
-                {
-                    Engine.Game.Content.Load<Texture2D>("blue_straight"),
-                    Engine.Game.Content.Load<Texture2D>("blue_left"),
-                    Engine.Game.Content.Load<Texture2D>("blue_right"),
+            allCars = new List<List<Texture2D>> {
+                new List<Texture2D> {
+                    Engine.Game.Content.Load<Texture2D>("Cars/Blue/blue_straight"),
+                    Engine.Game.Content.Load<Texture2D>("Cars/Blue/blue_left"),
+                    Engine.Game.Content.Load<Texture2D>("Cars/Blue/blue_right"),
                 },
-                new List<Texture2D>
-                {
-                    Engine.Game.Content.Load<Texture2D>("green_straight"),
-                    Engine.Game.Content.Load<Texture2D>("green_left"),
-                    Engine.Game.Content.Load<Texture2D>("green_right"),
+                new List<Texture2D> {
+                    Engine.Game.Content.Load<Texture2D>("Cars/Green/green_straight"),
+                    Engine.Game.Content.Load<Texture2D>("Cars/Green/green_left"),
+                    Engine.Game.Content.Load<Texture2D>("Cars/Green/green_right"),
                 },
-                new List<Texture2D>
-                {
-                    Engine.Game.Content.Load<Texture2D>("yellow_straight"),
-                    Engine.Game.Content.Load<Texture2D>("yellow_left"),
-                    Engine.Game.Content.Load<Texture2D>("yellow_right"),
+                new List<Texture2D> {
+                    Engine.Game.Content.Load<Texture2D>("Cars/Yellow/yellow_straight"),
+                    Engine.Game.Content.Load<Texture2D>("Cars/Yellow/yellow_left"),
+                    Engine.Game.Content.Load<Texture2D>("Cars/Yellow/yellow_right"),
                 },
-                new List<Texture2D>
-                {
-                    Engine.Game.Content.Load<Texture2D>("red_straight"),
-                    Engine.Game.Content.Load<Texture2D>("red_left"),
-                    Engine.Game.Content.Load<Texture2D>("red_right"),
+                new List<Texture2D> {
+                    Engine.Game.Content.Load<Texture2D>("Cars/Red/red_straight"),
+                    Engine.Game.Content.Load<Texture2D>("Cars/Red/red_left"),
+                    Engine.Game.Content.Load<Texture2D>("Cars/Red/red_right"),
                 }
             };
 
@@ -106,10 +116,10 @@ namespace Assignment_8
             
             topSpeed = 10.0f;
             turningSpeed = 0.1f;
-            accel = 0.5f;
-            mass = 10.0f;
-            friction = 0.1f;
             turningSpeedMinStart = 2.5f;
+            accel = 0.5f;
+            friction = 0.1f;
+            mass = 10.0f;
         }
 
         public Car ()
@@ -135,10 +145,12 @@ namespace Assignment_8
         #endregion
 
         #region Update
-        public void update(KeyboardState keyState)
+        public void update()
         {
-            if (isHuman)
+            if (controller != CarController.Nothing)
             {
+                KeyboardState keyState = Keyboard.GetState();
+
                 humanUpdate(keyState);
             }
             else
@@ -154,7 +166,7 @@ namespace Assignment_8
             //turning
             turnState = CarTurnState.Straight;
 
-            if (keyState.IsKeyDown(Keys.Left))
+            if (keyState.IsKeyDown(interfaceKey(ControlKey.Left)))
             {
                 if (currentSpeed > 0)
                 {
@@ -167,7 +179,7 @@ namespace Assignment_8
 
                 turnState = CarTurnState.Left;
             }
-            if (keyState.IsKeyDown(Keys.Right))
+            if (keyState.IsKeyDown(interfaceKey(ControlKey.Right)))
             {
                 if (currentSpeed > 0)
                 {
@@ -182,10 +194,10 @@ namespace Assignment_8
             }
             //acceleration
 
-            bool causedFriction = false;
             //used to stop the car and prevent a flip thing where the car cant actually stop.
+            bool causedFriction = false;
 
-            if (keyState.IsKeyDown(Keys.Up) && currentSpeed < topSpeed)
+            if (keyState.IsKeyDown(interfaceKey(ControlKey.Up)) && currentSpeed < topSpeed)
             {
                 currentSpeed += accel;
 
@@ -200,7 +212,7 @@ namespace Assignment_8
                 causedFriction = true;
             }
 
-            if (keyState.IsKeyDown(Keys.Down) && currentSpeed > -topSpeed)
+            if (keyState.IsKeyDown(interfaceKey(ControlKey.Down)) && currentSpeed > -topSpeed)
             {
                 currentSpeed -= accel;
 
@@ -231,5 +243,33 @@ namespace Assignment_8
             position.Y += (float)(currentSpeed * Math.Sin(angle));
         }
         #endregion
+
+        private Keys interfaceKey(ControlKey key)
+        {
+            switch (controller)
+            {
+                case CarController.Player1:
+                    switch (key)
+                    {
+                        case ControlKey.Up:
+                            return Keys.Up;
+                        case ControlKey.Down:
+                            return Keys.Down;
+                    }
+                    break;
+                case CarController.Player2:
+                    switch (key)
+                    {
+                        case ControlKey.Up:
+                            return Keys.W;
+                        case ControlKey.Down:
+                            return Keys.S;
+                    }
+                    break;
+            }
+
+            //should never be called
+            return Keys.Escape;
+        }
     }
 }
