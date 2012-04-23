@@ -242,7 +242,6 @@ namespace Assignment_8
             position.X += (float)(currentSpeed * Math.Cos(angle));
             position.Y += (float)(currentSpeed * Math.Sin(angle));
         }
-        #endregion
 
         private Keys interfaceKey(ControlKey key)
         {
@@ -279,5 +278,6 @@ namespace Assignment_8
             //should never be called
             return Keys.Escape;
         }
+        #endregion
     }
 }
