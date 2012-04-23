@@ -124,17 +124,17 @@ namespace Assignment_8
             }
             if (Collision.CarToCar((int)cars[1].position.X, (int)cars[1].position.Y, (int)Car.source.Width, (int)Car.source.Height, (int)cars[2].position.X, (int)cars[2].position.Y, (int)Car.source.Width, (int)Car.source.Height))
             {
-                cars[0].currentSpeed *= -(1);
-                cars[3].currentSpeed *= -(1);
+                cars[1].currentSpeed *= -(1);
+                cars[2].currentSpeed *= -(1);
             }
             if (Collision.CarToCar((int)cars[1].position.X, (int)cars[1].position.Y, (int)Car.source.Width, (int)Car.source.Height, (int)cars[3].position.X, (int)cars[3].position.Y, (int)Car.source.Width, (int)Car.source.Height))
             {
-                cars[0].currentSpeed *= -(1);
+                cars[1].currentSpeed *= -(1);
                 cars[3].currentSpeed *= -(1);
             }
             if (Collision.CarToCar((int)cars[2].position.X, (int)cars[2].position.Y, (int)Car.source.Width, (int)Car.source.Height, (int)cars[3].position.X, (int)cars[3].position.Y, (int)Car.source.Width, (int)Car.source.Height))
             {
-                cars[0].currentSpeed *= -(1);
+                cars[2].currentSpeed *= -(1);
                 cars[3].currentSpeed *= -(1);
             }
        
