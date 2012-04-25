@@ -45,7 +45,7 @@ namespace Assignment_8
             graphics.IsFullScreen = false;
             graphics.ApplyChanges();
 
-            cars = new Car[4];
+            cars = new Car[2];
 
             base.Initialize();
 
@@ -64,13 +64,13 @@ namespace Assignment_8
 
             cars[0] = new Car();
             cars[1] = new Car();
-            cars[2] = new Car();
-            cars[3] = new Car();
+            //cars[2] = new Car();
+            //cars[3] = new Car();
 
             cars[0].controller = CarController.Player1;
             cars[1].controller = CarController.Player2;
-            cars[2].controller = CarController.Player2;
-            cars[3].controller = CarController.Player2;
+            //cars[2].controller = CarController.Player2;
+            //cars[3].controller = CarController.Player2;
 
             trackManager.loadTrack1();
 
@@ -119,6 +119,8 @@ namespace Assignment_8
                 cars[0].currentSpeed *= -(1);
                 cars[1].currentSpeed *= -(1);
             }
+
+            /*
             if (Collision.CarToCar((int)cars[0].position.X, (int)cars[0].position.Y, (int)Car.source.Width, (int)Car.source.Height, (int)cars[2].position.X, (int)cars[2].position.Y, (int)Car.source.Width, (int)Car.source.Height))
             {
                 cars[0].currentSpeed *= -(1);
@@ -144,6 +146,9 @@ namespace Assignment_8
                 cars[2].currentSpeed *= -(1);
                 cars[3].currentSpeed *= -(1);
             }
+            */
+  
+
        
             
 
